@@ -51,4 +51,3 @@ for i in range(t):
     for	k, v in result.items():
         if(int(v) % 2 != 0 ):
             print(k)
-    print(result)
