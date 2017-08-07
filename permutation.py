@@ -1,29 +1,34 @@
-def permutation(index,data,result,fullResult):
-    # A BGS -> # B GS
-    # print (index,data)
-    if(len(data) == 2):
-        result.append(data[1] + data[0])
-        result.append(data[0] + data[1])
-        return result
+def permutation(data,index,fullResult):
+    if(len(data) == 1):
+        return fullResult.append(data[0])
+    elif(len(data) == 2):
+        if(index == ''):
+            fullResult.append(data[0] + data[1])
+            fullResult.append(data[1] + data[0])
+            return fullResult
+        else:
+            return [index + data[0] + data[1] ] + [index + data[1] + data[0] ]
     else:
-        res = []
-        ans = []
+        pop = []
         for i in range(len(data)):
-            newData = list(data)
-            newIndex = newData[i]
-            newData.remove(newIndex)
-            res = permutation(newIndex,newData,result,fullResult)
+            if(i > 0):
+                temp = data[0]
+                data[0] = data[i]
+                data[i] = temp
+            newIndex = data[0]
+            newData = list(data[1 : len(data)])
 
-            ans.append(res);
-        print(ans)
-        return fullResult
+            pop = permutation(newData,newIndex,fullResult)
+            for j in range(len(pop)):
+                fullResult.append(index + pop[j])
+            pop = []
+        return pop
 
 
-inputData = "ABSG"
-result = []
-response = []
+
+
+inputData = "ABCD"
 fullResult = []
-for i in range(len(inputData)):
-    data = list(inputData)
-    data.remove(data[i])
-    permutation(inputData[i],data,result,fullResult)
+permutation(list(inputData),'',fullResult)
+print(fullResult)
+print(len(fullResult))
