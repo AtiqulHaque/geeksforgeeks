@@ -1,3 +1,10 @@
+# 1
+# 112
+# 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 0 0 1 1 0 1 0 1 0 0 0 0 1 0 1 0 1 1 1 1 0 0 0 0 1
+# 1 1 0 0 1 1 1 1 1 0 0 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 0 1 1 0 0 0 1 1 1 0 0 0 0 1
+# 0 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1 1 0 0 0 0 0 1 1 1 0 0 0 0 0 1 0
+
+
 def allFillByZero(r):
     for i in r:
         if(i == 0):
@@ -7,6 +14,7 @@ def allFillByZero(r):
 for _ in range(int(input())):
     n = int(input())
     a = list(map(int, input().split()))
+    print (a)
     count = 0
     while (allFillByZero(a)):
         count += 1
