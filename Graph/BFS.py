@@ -1,3 +1,6 @@
+from collections import deque 
+
+
 for _ in range(int(input())):
     graph = {}
     
@@ -17,16 +20,57 @@ for _ in range(int(input())):
     print(iData, graph)
 
     visited = []
-    myStack = []
+    q = deque() 
+    allNodes = list(graph.keys())
 
+    # visited.append(allNodes[0])
+    q.append(allNodes[0])
 
-    for i in range(graph.keys()):
+    while q:
+        i = q.pop()
         if i not in visited:
-            
             visited.append(i)
-            for j in graph[i]:
-                myStack.append(j)
+            if i in allNodes:
+                for j in graph[i]:
+                    q.append(j)
 
 
-                
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        # for e in graph[i]:
+        # if i not in visited:
+        #     visited.append(i)
+        #     if  i in graph.keys():
+        #         for j in graph[i]:
+        #             q.append(j)
+
+    # for i in graph.keys():
+    #     if i not in visited:
+    #         visited.append(i)
+    #         for j in graph[i]:
+    #             q.append(j)
+        
+    #     while len(q) != 0:
+    #         k = q.popleft()
+    #         visited.append(k)
+    #         if k in graph.keys():
+    #             for l in graph[k]:
+    #                 q.append(l)
+                    
+
+print(visited)
